@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material Rental Service - Contact Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="icon" href="vercel.json">
+    <script src="vercel.json" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-boxes"></i> Material Rental Service</h1>
+            <p>Order multiple construction materials with rental dates and pricing</p>
+        </div>
+
+        <div class="form-container">
+            <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="access_key" value="cc7f26a6-e1d3-4677-9ab3-118330fb1cb6">
+                <input type="hidden" name="subject" value="New Material Rental Order Request">
+                
+                <!-- Hidden field to store selected payment method -->
+                <input type="hidden" id="paymentMethodValue" name="payment_method" value="">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="customerName"><i class="fas fa-user"></i> Customer Name</label>
+                        <input type="text" id="customerName" name="name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber"><i class="fas fa-phone"></i> Phone Number</label>
+                        <input type="text" id="phoneNumber" name="phone" placeholder="Enter your phone number" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="serviceName"><i class="fas fa-tools"></i> Service Giver Name</label>
+                    <select id="serviceName" name="service" required>
+                        <option value="" disabled selected>Name</option>
+                        <option value="Nejiba">Nejiba</option>
+                        <option value="Behriya">Behriya</option>
+                    </select>
+                </div>
+                
+                <!-- Rental Dates Section -->
+                <div class="date-section">
+                    <div class="form-group">
+                        <label for="rentalStartDate"><i class="fas fa-calendar-alt"></i> Rental Start Date</label>
+                        <input type="date" id="rentalStartDate" name="start_date" required>
+                     
+                    </div>
+                    <div class="form-group">
+                        <label for="rentalEndDate"><i class="fas fa-calendar-check"></i> Rental End Date</label>
+                        <input type="date" id="rentalEndDate" name="end_date" required>
+                    </div>
+                </div>
+                
+                <!-- Materials Section -->
+                <div class="materials-section">
+                    <div class="materials-header">
+                        <h2><i class="fas fa-list"></i> Materials to Rent</h2>
+                        <span class="material-counter">1/10 Materials</span>
+                    </div>
+                    
+                    <div id="materialsContainer">
+                        <div class="material-item" data-index="1">
+                            <div class="form-group">
+                                <label>Material Name</label>
+                                <input type="text" placeholder="e.g., Cement, Steel, Ladder" class="material-name" name="material_name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Quantity</label>
+                                <input type="number" placeholder="Quantity" class="material-quantity" name="quantity" min="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Price per Unit ($)</label>
+                                <input type="number" placeholder="Price" class="material-price" name="price" min="0" step="0.01" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Rental Period (masyashya)</label>
+                                <input type="number" placeholder="masyashya" class="material-rent" name="rent_period" min="1" required>
+                            </div>
+                            <button type="button" class="remove-btn" disabled><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                    
+                    <button type="button" id="addMaterialBtn" class="add-material-btn">
+                        <i class="fas fa-plus"></i> Add Another Material
+                    </button>
+                </div>
+                
+                <!-- Payment Method Section -->
+                <div class="payment-section">
+                    <div class="payment-header">
+                        <i class="fas fa-credit-card"></i>
+                        <h3>Payment Method</h3>
+                    </div>
+                    <p>Select your preferred payment method:</p>
+                    
+                    <div class="payment-options">
+                        <div class="payment-option" data-method="cash">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <div>Cash</div>
+                        </div>
+                        <div class="payment-option" data-method="cbe">
+                            <i class="fas fa-university"></i>
+                            <div>CBE</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Payment Amount Box -->
+                    <div id="paymentAmountBox" class="payment-amount" style="display: none;">
+                        <label for="Total Amount">Total Amount ($)</label>
+                        <input type="number" id="paymentAmount" name="payment_amount" placeholder="Enter amount" min="0" step="0.01">
+                    </div>
+                    
+                    <!-- National ID Field (always visible) -->
+                    <div id="nationalIdField" class="form-group" style="display: none;">
+                        <label for="nationalId"><i class="fas fa-id-card"></i> National ID</label>
+                        <input type="text" id="nationalId" name="national_id" placeholder="Enter your National ID number" required>
+                    </div>
+                <div class="form-group">
+                    <label for="message"><i class="fas fa-comment"></i> Additional Information</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Any additional details about your order or rental period..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Submit Order Request
+                </button>
+            </form>
+        </div>
+        
+        <div class="footer">
+            <p><i class="fas fa-lock"></i> Your documents are securely processed</p>
+            <p>© 2025 Material Rental Service. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
